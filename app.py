@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_from_directory
 import yfinance as yf
 import pandas as pd
 from threading import Lock
@@ -8,6 +8,9 @@ app = Flask(__name__)
 signals_lock = Lock()
 buy_signals = []
 sell_signals = []
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # Fetch data from yfinance
 def fetch_data(stock_symbol):
