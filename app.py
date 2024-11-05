@@ -28,7 +28,7 @@ def mark_first_candle(data):
     price_check = close_price >= 1000
     candle_color = "green" if close_price > open_price else "red"
 
-    if percentage_change > 2 or not price_check:
+    if percentage_change > 1 or not price_check:
         return None, None, None
     return high, low, candle_color
 
